@@ -20,26 +20,32 @@
 // });
 
 Route::get('/', 'HomeController@index');
-
-Route::get('/posts', 'PostsController@index');
 Route::get('/events', 'EventsController@index');
-
-
-// Route::get('/posts/{post}', 'PostsController@show');
-
-Route::get('/posts/create', 'PostsController@create');
-
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 // ## Admin ##
 Route::get('/admin', 'Admin\AdminController@dashboard');
 
 // Events
 Route::get('/admin/events', 'Admin\EventsController@index');
+
+// Create
 Route::get('/admin/events/create', 'Admin\EventsController@create');
-Route::get('/admin/events/edit', 'Admin\EventsController@patch');
-Route::get('/admin/events/delete', 'Admin\EventsController@delete');
+
+// Edit
+// Route::post('/admin/events/{id}/edit', 'Admin\EventsController@edit');
+
+// Update
+// Route::post('/admin/events/{id}/edit', 'Admin\EventsController@edit');
+
+// Delete
+// Route::patch('/admin/{id}', 'Admin\EventsController@update');
+
+// Show
+Route::get('/admin/events/{post}', 'Admin\PostsController@show');
+
+// Save
+Route::post('/admin/events', 'Admin\EventsController@store');
